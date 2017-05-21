@@ -38,7 +38,7 @@ describe('CellEditModeComponent', () => {
   let dataSet=new DataSet(data,columnSetting);
   let column=new Column('0',columnSetting['email'])
   let row=new Row(0,data[0],dataSet);
-  let cell:Cell=new Cell(data[0]['email'],column,row,dataSet);
+  let cell:Cell=new Cell(data[0]['email'],column,row);
 
 
   beforeEach(async(() => {

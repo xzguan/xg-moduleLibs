@@ -4,7 +4,7 @@ export class Cell {
     newValue: any = '';
     protected static PREPARE = (value: any) => value;
 
-    constructor(protected value: any, protected column: Column, protected row: Row, dataSet: DataSet) {
+    constructor(protected value: any, protected column: Column, protected row: Row) {
         this.newValue = value;
     }
     getColumn() {
