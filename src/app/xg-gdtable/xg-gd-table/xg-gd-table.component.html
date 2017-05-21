@@ -1,0 +1,99 @@
+<div class="xg-gd-table-container">
+    <table class="xg-gd-table table" [id]="grid.getSetting('attr.id')" [ngClass]="grid.getSetting('attr.class')">
+        <thead *ngIf="!grid.getSetting('hideHeader')|| !grid.getSetting('hideSubHeader')">
+            <tr class="xg-gd-table-titles" *ngIf="!grid.getSetting('hideHeader')">
+                <th *ngIf="grid.isMultiSelectVisible()" (click)="selectAllRows()">
+                    <input type="checkbox" [ngModel]="isAllSelected" />
+                </th>
+                <th *ngIf="grid.showActionColumn('left')" class="xg-gd-table-actions">
+                    <div class="xg-gd-table-title">{{ grid.getSetting('actions.columnTitle') }}</div>
+                </th>
+                <th *ngFor="let column of grid.getColumns()" class="xg-gd-table-th {{column.id}}" [ngClass]="column.class">
+                    <div class="xg-gd-table-title">
+                        <xg-gd-table-title [source]="source" [column]="column" (sort)="sort($event)"></xg-gd-table-title>
+                    </div>
+                </th>
+                <th *ngIf="grid.showActionColumn('right')" class="xg-gd-table-actions">
+                    <div class="xg-gd-table-title">{{ grid.getSetting('actions.columnTitle') }}</div>
+                </th>
+            </tr>
+
+            <tr class="xg-gd-table-filters" *ngIf="!grid.getSetting('hideSubHeader')">
+                <th *ngIf="grid.isMultiSelectVisible()"></th>
+                <th *ngIf="grid.showActionColumn('left')" class="xg-gd-table-actions-title xg-gd-table-actions-title-add">
+                    <a *ngIf="grid.getSetting('actions.add')" href="#" class="xg-gd-table-action xg-gd-table-action-add-add"
+                       [innerHTML]="grid.getSetting('add.addButtonContent')" (click)="onAdd($event)"></a>
+                </th>
+                <th *ngFor="let column of grid.getColumns()" class="xg-gd-table-th {{column.id}}">
+                    <xg-gd-table-filter [source]="source"
+                                         [column]="column"
+                                         [inputClass]="grid.getSetting('filter.inputClass')"
+                                         (filter)="filter($event)"></xg-gd-table-filter>
+                </th>
+                <th *ngIf="grid.showActionColumn('right')" class="xg-gd-table-actions-title xg-gd-table-actions-title-add">
+                    <a *ngIf="grid.getSetting('actions.add')" href="#" class="xg-gd-table-action xg-gd-table-action-add-add"
+                       [innerHTML]="grid.getSetting('add.addButtonContent')" (click)="onAdd($event)"></a>
+                </th>
+            </tr>
+            <tr *ngIf="grid.createFormShown">
+                <td *ngIf="grid.isMultiSelectVisible()"></td>
+                <td class="xg-gd-table-actions">
+                    <a href="#" class="xg-gd-table-action xg-gd-table-action-add-create"
+                       [innerHTML]="grid.getSetting('add.createButtonContent')" (click)="onCreate(grid.getNewRow(), $event)"></a>
+                    <a href="#" class="xg-gd-table-action xg-gd-table-action-add-cancel"
+                       [innerHTML]="grid.getSetting('add.cancelButtonContent')" (click)="grid.createFormShown = false;"></a>
+                </td>
+                <td *ngFor="let cell of grid.getNewRow().getCells()">
+                    <xg-gd-table-cell [cell]="cell" [inputClass]="grid.getSetting('add.inputClass')"
+                                       [isInEditing]="grid.getNewRow().isInEditing"
+                                       (edited)="onCreate(grid.getNewRow(), $event)"></xg-gd-table-cell>
+                </td>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of grid.getRows()" (click)="onUserSelectRow(row)" class="xg-gd-table-row"
+                [ngClass]="{'selected': row.isSelected}">
+                <td *ngIf="grid.isMultiSelectVisible()" class="xg-gd-table-actions xg-gd-table-action-multiple-select"
+                    (click)="multipleSelectRow(row)">
+                    <input type="checkbox" class="form-control" [ngModel]="row.isSelected">
+                </td>
+                <td *ngIf="!row.isInEditing && grid.showActionColumn('left')" class="xg-gd-table-actions">
+                    <a href="#" *ngIf="grid.getSetting('actions.edit')" class="xg-gd-table-action xg-gd-table-action-edit-edit"
+                       [innerHTML]="grid.getSetting('edit.editButtonContent')" (click)="onEdit(row, $event)"></a>
+                    <a href="#" *ngIf="grid.getSetting('actions.delete')" class="xg-gd-table-action xg-gd-table-action-delete-delete"
+                       [innerHTML]="grid.getSetting('delete.deleteButtonContent')" (click)="onDelete(row, $event)"></a>
+                </td>
+                <td *ngIf="row.isInEditing" class="xg-gd-table-actions">
+                    <a href="#" class="xg-gd-table-action xg-gd-table-action-edit-save"
+                       [innerHTML]="grid.getSetting('edit.saveButtonContent')" (click)="onSave(row, $event)"></a>
+                    <a href="#" class="xg-gd-table-action xg-gd-table-action-edit-cancel"
+                       [innerHTML]="grid.getSetting('edit.cancelButtonContent')" (click)="onCancelEdit(row, $event)"></a>
+                </td>
+             
+                <td *ngFor="let cell of row.getCells()">
+                    <xg-gd-table-cell [cell]="cell" [mode]="grid.getSetting('mode')"
+                                       [inputClass]="grid.getSetting('edit.inputClass')" [isInEditing]="row.isInEditing"
+                                       (edited)="onSave(row, $event)"></xg-gd-table-cell>
+                </td>
+                <td *ngIf="!row.isInEditing && grid.showActionColumn('right')" class="xg-gd-table-actions">
+                    <a href="#" *ngIf="grid.getSetting('actions.edit')" class="xg-gd-table-action xg-gd-table-action-edit-edit"
+                       [innerHTML]="grid.getSetting('edit.editButtonContent')" (click)="onEdit(row, $event)"></a>
+                    <a href="#" *ngIf="grid.getSetting('actions.delete')" class="xg-gd-table-action xg-gd-table-action-delete-delete"
+                       [innerHTML]="grid.getSetting('delete.deleteButtonContent')" (click)="onDelete(row, $event)"></a>
+                </td>
+            </tr>
+            <tr *ngIf="grid.getRows().length == 0">
+                <td [attr.colspan]="grid.getColumns().length + (grid.getSetting('actions.add') || grid.getSetting('actions.edit') || grid.getSetting('actions.delete'))">
+                    {{ grid.getSetting('noDataMessage') }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div  style="text-align:center ; margin:0">
+            <xg-gd-table-pager *ngIf="grid.getSetting('pager.display')"
+                        [source]="source"
+                        [perPage]="grid.getSetting('pager.perPage')"
+                        (changePage)="changePage($event)"></xg-gd-table-pager>
+ </div>
