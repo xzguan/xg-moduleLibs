@@ -39,7 +39,7 @@ export class Row {
 
     createCell(column: Column): Cell {
         let value = this.data[column.key] === undefined ? '' : this.data[column.key];
-        return new Cell(value, column, this, this.dataSet);
+        return new Cell(value, column, this);
     }
 
 }
