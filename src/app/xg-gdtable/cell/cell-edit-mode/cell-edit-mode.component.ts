@@ -7,11 +7,11 @@ import { Cell } from '../../data/data-set/index';
     
     template: `
           <div [ngSwitch]="getEditorType()">
-                <custom-url-editor *ngSwitchCase="'custom-url'"
+                <cell-custom-editor *ngSwitchCase="'custom'"
                                           [cell]="cell"
                                           [inputClass]="inputClass"
                                           (edited)="onEdited($event)">
-                </custom-url-editor>
+                </cell-custom-editor>
                 <cell-default-editor *ngSwitchDefault
                                           [cell]="cell"
                                           [inputClass]="inputClass"

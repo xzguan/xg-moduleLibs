@@ -11,7 +11,7 @@ import {CellEditModeComponent} from '../cell/cell-edit-mode/cell-edit-mode.compo
 
 import {XG_TABLE_CELL_COMPONENTS} from './editors/index';
 import {CustomUrlEditorComponent} from './custom-editors/custom-url-editor.component'
-import {DefaultEditorComponent} from './cell-edit-mode/cell-default-editor.component'
+import {CellDefaultEditorComponent} from './cell-edit-mode/cell-default-editor/cell-default-editor.component'
 import {Ng2CompleterModule} from 'ng2-completer'
 
 describe('CellComponent', () => {
@@ -44,7 +44,7 @@ describe('CellComponent', () => {
   let dataSource:DataSource=new LocalDataSource(data);
   let column:Column=new Column('0',columnSetting['email']);
   let row:Row=new Row(0,data,dataSet);
-  let cell:Cell=new Cell(data[0]['email'],column,row,dataSet)
+  let cell:Cell=new Cell(data[0]['email'],column,row)
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -57,7 +57,7 @@ describe('CellComponent', () => {
         CellViewModeComponent,
         CellEditModeComponent,
         CustomUrlEditorComponent,
-        DefaultEditorComponent,
+        CellDefaultEditorComponent,
         ...XG_TABLE_CELL_COMPONENTS
       ],
       schemas:[CUSTOM_ELEMENTS_SCHEMA]

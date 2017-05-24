@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { DefaultEditor } from './default-editor.component';
+import { DefaultEditor } from './default-editor';
 
 @Component({
     selector: 'textarea-editor',

@@ -11,7 +11,7 @@ import { CellComponent } from './cell/cell.component';
 import { CellEditModeComponent } from './cell/cell-edit-mode/cell-edit-mode.component';
 import { CellViewModeComponent } from './cell/cell-view-mode/cell-view-mode.component';
 
-import {DefaultEditorComponent} from './cell/cell-edit-mode/cell-default-editor.component'
+
 
 
 import {XG_TABLE_CELL_COMPONENTS} from './cell/editors/index';
@@ -20,6 +20,8 @@ import {CustomUrlEditorComponent} from './cell/custom-editors/custom-url-editor.
 
 
 import {Ng2CompleterModule} from 'ng2-completer';
+import { CellCustomEditorComponent } from './cell/cell-edit-mode/cell-custom-editor/cell-custom-editor.component';
+import { CellDefaultEditorComponent } from './cell/cell-edit-mode/cell-default-editor/cell-default-editor.component';
 
 
 export * from './data/data-set/index';
@@ -37,8 +39,8 @@ export * from './data/datasource/data-source';
 const XG_TABLE_EDIT_COMPONENTS=[
   CellEditModeComponent,
   CellViewModeComponent,
-  DefaultEditorComponent,
-  CustomUrlEditorComponent
+  CellDefaultEditorComponent,
+  CellCustomEditorComponent
 ]
 export   {XgGdTableComponent,XG_TABLE_CELL_COMPONENTS,XG_TABLE_EDIT_COMPONENTS,XG_TABLE_PARTS_COMPONENTS};
 
@@ -53,7 +55,9 @@ export   {XgGdTableComponent,XG_TABLE_CELL_COMPONENTS,XG_TABLE_EDIT_COMPONENTS,X
      XgGdTableComponent,
      ...XG_TABLE_PARTS_COMPONENTS,
      ...XG_TABLE_EDIT_COMPONENTS,
-      ...XG_TABLE_CELL_COMPONENTS],
+      ...XG_TABLE_CELL_COMPONENTS,
+      CellCustomEditorComponent,
+      CellDefaultEditorComponent],
   
   exports:[XgGdTableComponent,...XG_TABLE_CELL_COMPONENTS,...XG_TABLE_EDIT_COMPONENTS,...XG_TABLE_PARTS_COMPONENTS]
 })

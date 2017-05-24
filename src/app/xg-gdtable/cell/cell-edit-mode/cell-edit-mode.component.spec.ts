@@ -5,7 +5,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { CellEditModeComponent } from './cell-edit-mode.component';
 import {DataSet,Cell,Column,Row} from '../../data/data-set/index';
-import {DefaultEditorComponent} from './cell-default-editor.component';
+import {CellDefaultEditorComponent} from './cell-default-editor/cell-default-editor.component';
 import {CustomUrlEditorComponent} from '../custom-editors/custom-url-editor.component';
 
 import {XG_TABLE_CELL_COMPONENTS} from '../editors/index';
@@ -50,7 +50,7 @@ describe('CellEditModeComponent', () => {
       declarations: [
          CellEditModeComponent,
          CustomUrlEditorComponent,
-         DefaultEditorComponent,
+         CellDefaultEditorComponent,
          ...XG_TABLE_CELL_COMPONENTS
         ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

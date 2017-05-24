@@ -3,7 +3,7 @@ import {InputEditorComponent} from './input-editor.component';
 import {SelectEditorComponent} from './select-editor.component';
 import {TextareaEditorComponent} from './textarea-editor.component';
 import {CheckboxEditorComponent} from './checkbox-editor.component';
-import {DefaultEditor,Editor} from './default-editor.component';
+import {DefaultEditor,Editor} from './default-editor';
 
 export {CompleterEditorComponent,
     InputEditorComponent,
