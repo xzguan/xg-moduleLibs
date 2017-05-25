@@ -4,7 +4,6 @@ import { DefaultEditor ,Editor} from '../editors/index';
 
 
 @Component({
-    selector: 'custom-url-editor',
     template: `
     Name: <input [ngClass]="inputClass"
             #name

@@ -1,4 +1,8 @@
 import { TestBed, async,ComponentFixture } from '@angular/core/testing';
+import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+
 
 import { AppComponent } from './app.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
@@ -6,6 +10,9 @@ import {XgGdtableModule,DataSource,LocalDataSource,XgGdTableComponent,XG_TABLE_C
 import {FormsModule} from '@angular/forms';
 
 import {Ng2CompleterModule} from 'ng2-completer';
+
+import {FakeCustomUrlEditorModule}  from './xg-gdtable/cell/custom-editors/fakeCustomUrlEditorModule';
+
 
 /*import {XG_TABLE_CELL_COMPONENTS} from './xg-gdtable/cell/editors/index'
 import {TitleComponent} from './xg-gdtable/title/title.component';
@@ -17,6 +24,9 @@ import { CellEditModeComponent } from './xg-gdtable/cell/cell-edit-mode/cell-edi
 import { CellViewModeComponent } from './xg-gdtable/cell/cell-view-mode/cell-view-mode.component';
 import {CustomUrlEditorComponent} from './xg-gdtable/cell/custom-editors/custom-url-editor.component';
 import {DefaultEditorComponent} from './xg-gdtable/cell/cell-edit-mode/cell-default-editor.component'*/
+
+
+
 
 describe('AppComponent', () => {
   let component: XgGdTableComponent;
@@ -64,7 +74,7 @@ describe('AppComponent', () => {
                 type: 'html',
                 editor: {
                     type: 'custom',
-                    component: ''
+                    component: 'CustomUrlEditorComponent'
                 }
             }
         }
@@ -75,12 +85,17 @@ describe('AppComponent', () => {
       imports:[
         FormsModule,
         Ng2CompleterModule,
-        XgGdtableModule
+        XgGdtableModule,
+        FakeCustomUrlEditorModule
+
         ],
       declarations: [
         AppComponent, 
+
       ],
-      schemas:[CUSTOM_ELEMENTS_SCHEMA]
+
+      schemas:[CUSTOM_ELEMENTS_SCHEMA],
+      
     }).compileComponents();
   }));
 

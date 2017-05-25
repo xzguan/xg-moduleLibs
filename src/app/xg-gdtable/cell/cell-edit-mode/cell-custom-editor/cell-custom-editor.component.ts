@@ -13,7 +13,7 @@ import { CellCommonEditor } from '../cell-common-editor';
 @Component({
   selector: 'cell-custom-editor',
   template: `
-    <template #dynamicTarget></template>
+    <ng-template #dynamicTarget></ng-template>
   `,
 })
 export class CellCustomEditorComponent extends CellCommonEditor implements OnChanges {

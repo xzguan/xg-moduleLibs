@@ -59,6 +59,7 @@ export   {XgGdTableComponent,XG_TABLE_CELL_COMPONENTS,XG_TABLE_EDIT_COMPONENTS,X
       CellCustomEditorComponent,
       CellDefaultEditorComponent],
   
-  exports:[XgGdTableComponent,...XG_TABLE_CELL_COMPONENTS,...XG_TABLE_EDIT_COMPONENTS,...XG_TABLE_PARTS_COMPONENTS]
+  exports:[XgGdTableComponent,...XG_TABLE_CELL_COMPONENTS,...XG_TABLE_EDIT_COMPONENTS,...XG_TABLE_PARTS_COMPONENTS],
+  
 })
 export class XgGdtableModule { }
