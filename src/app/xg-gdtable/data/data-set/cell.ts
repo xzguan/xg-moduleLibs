@@ -5,7 +5,12 @@ export class Cell {
     protected static PREPARE = (value: any) => value;
 
     constructor(protected value: any, protected column: Column, protected row: Row) {
-        this.newValue = value;
+        if(value){
+            this.newValue = value;
+        }else{
+            this.newValue=this.getDefaultValue();
+        }
+        
     }
     getColumn() {
         return this.column;
@@ -31,6 +36,9 @@ export class Cell {
     }
     isEditable(): boolean {
         return this.getColumn().isEditable;
+    }
+    getDefaultValue() :any{
+        return JSON.parse(JSON.stringify(this.getColumn().getDefaultValue()));
     }
 
 }

@@ -48,10 +48,10 @@ export class Grid {
     getInitialSort():Array<any> {
         let sortConfs:Array<any> = [];
         this.getColumns().forEach((column: Column) => {
-            if (column.isSortable && column.defaultSortDirection) {
+            if (column.isSortable ) {
                 let sortConf = {};
                 sortConf['field'] = column.key;
-                sortConf['direction'] = column.defaultSortDirection;
+                sortConf['direction'] = column.sortDirection
                 sortConf['compare'] = column.getCompareFunction();
                 sortConfs.push(sortConf);
             }

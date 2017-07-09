@@ -18,6 +18,7 @@ import { Cell } from '../../data/data-set/index';
 export class CellViewModeComponent implements OnChanges, AfterViewInit {
     @Input() cell: Cell;
     @ViewChild('cellContainer') cellRef: ElementRef;
+    value:any;
 
     ngOnChanges(changes: any): void {
         setTimeout(() => this.renderCustomValue());                     
@@ -26,13 +27,13 @@ export class CellViewModeComponent implements OnChanges, AfterViewInit {
         this.renderCustomValue();    
     }
 
-    renderCustomValue(): void{
+    renderCustomValue(): void {
         const cellRenderFunc = this.cell.getColumn().getCellRenderFunction();
 
         if (cellRenderFunc && this.cellRef) {
-            cellRenderFunc.call(null, this.cell, this.cellRef.nativeElement);
-            //cellRenderFunc(this.cell.getValue());
+             cellRenderFunc.call(null, this.cell, this.cellRef.nativeElement);
         }
+
          
     }
 }

@@ -1,5 +1,5 @@
 <div class="xg-gd-table-container">
-    <table class="xg-gd-table table" [id]="grid.getSetting('attr.id')" [ngClass]="grid.getSetting('attr.class')">
+    <table class="xg-gd-table " [id]="grid.getSetting('attr.id')" [ngClass]="grid.getSetting('attr.class')">
         <thead *ngIf="!grid.getSetting('hideHeader')|| !grid.getSetting('hideSubHeader')">
             <tr class="xg-gd-table-titles" *ngIf="!grid.getSetting('hideHeader')">
                 <th *ngIf="grid.isMultiSelectVisible()" (click)="selectAllRows()">
@@ -55,8 +55,8 @@
             <tr *ngFor="let row of grid.getRows()" (click)="onUserSelectRow(row)" class="xg-gd-table-row"
                 [ngClass]="{'selected': row.isSelected}">
                 <td *ngIf="grid.isMultiSelectVisible()" class="xg-gd-table-actions xg-gd-table-action-multiple-select"
-                    (click)="multipleSelectRow(row)">
-                    <input type="checkbox" class="form-control" [ngModel]="row.isSelected">
+                    (click)="grid.multipleSelectRow(row)">
+                    <input type="checkbox"  [ngModel]="row.isSelected">
                 </td>
                 <td *ngIf="!row.isInEditing && grid.showActionColumn('left')" class="xg-gd-table-actions">
                     <a href="#" *ngIf="grid.getSetting('actions.edit')" class="xg-gd-table-action xg-gd-table-action-edit-edit"
@@ -72,7 +72,7 @@
                 </td>
              
                 <td *ngFor="let cell of row.getCells()">
-                    <xg-gd-table-cell [cell]="cell" [mode]="grid.getSetting('mode')"
+                    <xg-gd-table-cell [cell]="cell" [mode]="grid.getSetting('mode')" 
                                        [inputClass]="grid.getSetting('edit.inputClass')" [isInEditing]="row.isInEditing"
                                        (edited)="onSave(row, $event)"></xg-gd-table-cell>
                 </td>

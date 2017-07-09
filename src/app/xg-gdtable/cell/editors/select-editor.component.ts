@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { DefaultEditor } from './default-editor';
 
 @Component({
@@ -13,15 +13,22 @@ import { DefaultEditor } from './default-editor';
             (click)="onClick.emit($event)"
             (keydown.enter)="onEdited.emit($event)"
             (keydown.esc)="onStopEditing.emit($event)">
-            <option *ngFor="let option of cell.getColumn().getConfig()?.list" [value]="option.value"
+            <option *ngFor="let option of cell.getColumn().getEditorConfig()?.list" [value]="option.value"
                 [selected]="option.value==cell.getValue()" >{{option.title}}
             </option>
         </select>
     `
 })
 
-export class SelectEditorComponent extends DefaultEditor {
+export class SelectEditorComponent extends DefaultEditor implements OnInit {
+
     constructor() {
         super();
+                        
+    }
+    ngOnInit(){
+        if(!this.cell.newValue){
+            this.cell.newValue='Select One'
+        }
     }
 }

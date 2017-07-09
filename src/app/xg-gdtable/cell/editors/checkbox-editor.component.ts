@@ -10,7 +10,7 @@ import { DefaultEditor } from './default-editor';
               
                [name]="cell.getId()"  
                [disabled]="!cell.isEditable"        
-               [checked]="cell.getValue()==(cell.getColumn().getConfig().true||true)"
+               [checked]="cell.getValue()==(cell.getColumn().getEditorConfig().true||true)"
                (click)="onClick.emit($event)"
                (change)="onChange($event)">
     `,      
@@ -22,8 +22,8 @@ export class CheckboxEditorComponent extends DefaultEditor {
         super();
     }
     onChange(event: any): void {
-        const trueValue = (this.cell.getColumn().getConfig() && this.cell.getColumn().getConfig().true) || true;
-        const falseValue = (this.cell.getColumn().getConfig() && this.cell.getColumn().getConfig().false) || false;
+        const trueValue = (this.cell.getColumn().getEditorConfig() && this.cell.getColumn().getEditorConfig().true) || true;
+        const falseValue = (this.cell.getColumn().getEditorConfig() && this.cell.getColumn().getEditorConfig().false) || false;
         this.cell.newValue = event.target.checked ? trueValue : falseValue;
             
     }

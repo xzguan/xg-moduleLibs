@@ -1,7 +1,11 @@
 .xg-gd-table-container {
     border: solid 1px #ccc;
     margin-top: 20px;
+    
 }
 .xg-gd-table-container ul{
     margin: 0
+}
+.xg-gd-table {
+    
 }

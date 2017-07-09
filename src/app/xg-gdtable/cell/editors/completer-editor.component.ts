@@ -8,10 +8,10 @@ import { DefaultEditor } from './default-editor';
     selector: 'completer-editor',
     template: `
       <ng2-completer [(ngModel)]="completerStr"
-                     [dataService]="cell.getColumn().getConfig().completer.dataService"
-                     [minSearchLength]="cell.getColumn().getConfig().completer.minSearchLength ||0"
-                     [pause]="cell.getColumn().getConfig().completer.pause||0"
-                     [placeholder]="cell.getColumn().getConfig().completer.placeholder||'start typing...'"
+                     [dataService]="cell.getColumn().getEditorConfig().completer.dataService"
+                     [minSearchLength]="cell.getColumn().getEditorConfig().completer.minSearchLength ||0"
+                     [pause]="cell.getColumn().getEditorConfig().completer.pause||0"
+                     [placeholder]="cell.getColumn().getEditorConfig().completer.placeholder||'start typing...'"
                      (selected)="onEditedCompleter($event)">
      </ng2-completer>                     
     `
@@ -26,7 +26,7 @@ export class CompleterEditorComponent extends DefaultEditor implements OnInit {
 
     ngOnInit() {
         if (this.cell.getColumn().editor && this.cell.getColumn().editor.type === 'completer') {
-            let config = this.cell.getColumn().getConfig().completer;
+            let config = this.cell.getColumn().getEditorConfig().completer;
             config.dataService = this.completerService.local(config.data, config.searchFields, config.titleField);
             config.dataService.descriptionField(config.descriptionField);
         }

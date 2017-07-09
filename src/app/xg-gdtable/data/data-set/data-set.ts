@@ -24,6 +24,7 @@ export class DataSet {
     }
      
     createNewRow() {
+        
         this.newRow = new Row(0, {}, this);
         this.newRow.isInEditing = true;
     }
@@ -66,7 +67,7 @@ export class DataSet {
 
     multipleSelectRow(row: Row): Row {
         row.isSelected = !row.isSelected;
-        this.selectedRow = row;
+        this.selectedRow=row;
         return this.selectedRow;
     }
 

@@ -72,7 +72,7 @@ export abstract class DataSource {
             this.emitOnChanged('sort');
         }
     }
-    setFilter(filterConf: any, andOperator: boolean = true, doEmit?: boolean) {
+    setFilter(filterConf: Array<any>, andOperator: boolean = true, doEmit?: boolean) {
         if (doEmit) {
             this.emitOnChanged('filter');
         }

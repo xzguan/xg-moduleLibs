@@ -5,6 +5,7 @@ import { DefaultEditor ,Editor} from '../editors/index';
 
 @Component({
     template: `
+    <div style="border:dotted 3px #eee; margin:2px;padding:2px">
     Name: <input [ngClass]="inputClass"
             #name
             class="form-control short-input"
@@ -26,6 +27,7 @@ import { DefaultEditor ,Editor} from '../editors/index';
             (keydown.enter)="onEdited.emit($event)"
             (keydown.esc)="onStopEditing.emit()">
     <div [hidden]="true" [innerHTML]="cell.getValue()" #htmlValue></div>
+    </div>
     ` 
 })
 export class CustomUrlEditorComponent extends DefaultEditor {

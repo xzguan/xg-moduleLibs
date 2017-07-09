@@ -18,7 +18,7 @@ export const deepExtend = function (...objects: Array<any>) {
         Object.keys(arg).forEach(function (key: any) {
             src = target[key];
             val = arg[key];
-            //if val===target, val[key]===target, then would be iterated again and again
+            //if val===target, val[key]===target, no need to extend
             if (val === target || val === src) {
                 return;
             } else if (typeof val !== 'object' || val == null) {
@@ -45,7 +45,7 @@ export const deepExtend = function (...objects: Array<any>) {
 function deepCloneArray(arr: Array<any>): Array<any> {
     var clone: Array<any> = [];
     arr.forEach(function (item, index) {
-        if (typeof item === 'object' || item !== null) {
+        if (typeof item === 'object' && item !== null) {
             if (Array.isArray(item)) {
                 clone[index] = deepCloneArray(item);
             } else if (isSpecificValue(item)) {

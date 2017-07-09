@@ -8,12 +8,13 @@ export class Column {
     isEditable: boolean = true;
     isFilterable: boolean = false;
     sortDirection: string = '';
-    defaultSortDirection: string = '';
+    defaultSortDirection: string = 'asc';
     editor: { type: string, config: any, component: any } = { type: '', config: {}, component: null };
     compareFunction: Function;
     valuePrepareFunction: Function;
     filterFunction: Function;
     cellRenderFunction: Function;
+    defaultValue:any;
 
     constructor(public key: string, protected setting: any) {
         
@@ -25,7 +26,8 @@ export class Column {
 
     }
 
-    getConfig(): any {
+    
+    getEditorConfig(): any {
         
         return this.editor.config;
     }
@@ -42,10 +44,14 @@ export class Column {
         return this.cellRenderFunction;
     }
 
-
-    prepareSortDirection(): string {
-        return this.setting['sort'] === 'desc' ? 'desc' : 'asc';
+    getDefaultValue() :any {
+        var defaultValue='';
+        if(this.setting['defaultValue']){
+            defaultValue=this.setting['defaultValue'];
+        }
+        return defaultValue;
     }
+    
 
     prepareType(): string {
         return this.setting['type'] || this.determineType();
@@ -62,8 +68,9 @@ export class Column {
 
         this.isFilterable = !!this.setting['filter'];
         this.isSortable = !!this.setting['sort'];
-        this.defaultSortDirection = ['asc', 'desc'].indexOf(this.setting['defaultSortDirection']) !== -1 ? this.setting['defaultSortDirection'] : '';
-        this.sortDirection = this.prepareSortDirection();
+        this.defaultSortDirection = ['asc', 'desc'].indexOf(this.setting['defaultSortDirection']) !== -1 ? 
+                this.setting['defaultSortDirection'] : this.defaultSortDirection;
+        this.sortDirection = this.defaultSortDirection;
 
         this.compareFunction = this.setting['compareFunction']
         this.valuePrepareFunction = this.setting['valuePrepareFunction'];

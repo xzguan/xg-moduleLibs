@@ -38,7 +38,7 @@ export class Row {
     }
 
     createCell(column: Column): Cell {
-        let value = this.data[column.key] === undefined ? '' : this.data[column.key];
+        let value = this.data[column.key] === undefined ? JSON.parse(JSON.stringify(column.getDefaultValue()))  : this.data[column.key];
         return new Cell(value, column, this);
     }
 

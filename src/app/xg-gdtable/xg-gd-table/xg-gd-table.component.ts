@@ -20,6 +20,7 @@ export class XgGdTableComponent implements OnInit {
 
     ngOnInit(){
         this.initGrid();
+        
     }
     isAllSelected: boolean = false;
 

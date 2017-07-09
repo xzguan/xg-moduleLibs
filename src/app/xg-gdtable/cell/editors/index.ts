@@ -5,6 +5,7 @@ import {TextareaEditorComponent} from './textarea-editor.component';
 import {CheckboxEditorComponent} from './checkbox-editor.component';
 import {DefaultEditor,Editor} from './default-editor';
 
+
 export {CompleterEditorComponent,
     InputEditorComponent,
     SelectEditorComponent,
@@ -18,5 +19,12 @@ export const XG_TABLE_CELL_COMPONENTS=[
     SelectEditorComponent,
     TextareaEditorComponent,
     CheckboxEditorComponent,
- 
+
+]
+export const DEFAULT_XX_EDITOR_COMPONENTS=[
+    CompleterEditorComponent,
+    InputEditorComponent,
+    SelectEditorComponent,
+    TextareaEditorComponent,
+    CheckboxEditorComponent,
 ]

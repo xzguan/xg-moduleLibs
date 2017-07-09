@@ -8,12 +8,16 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AppComponent } from './app.component';
 
 import {XgGdtableModule} from './xg-gdtable/xg-gdtable.module'
-import {CustomUrlEditorComponent}  from './xg-gdtable/cell/custom-editors/custom-url-editor.component';
+/*import {CustomUrlEditorComponent}  from './xg-gdtable/cell/custom-editors/custom-url-editor.component';
+import {CustomCheckboxgroupEditorComponent}  from './xg-gdtable/cell/custom-editors/custom-checkgroup-editor.component';*/
+import { HookTestComponent } from './hook-test/hook-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomUrlEditorComponent
+    /*CustomUrlEditorComponent,
+    CustomCheckboxgroupEditorComponent,*/
+    HookTestComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,7 @@ import {CustomUrlEditorComponent}  from './xg-gdtable/cell/custom-editors/custom
     XgGdtableModule
     
   ],
-  entryComponents:[CustomUrlEditorComponent],
+  /*entryComponents:[CustomUrlEditorComponent,CustomCheckboxgroupEditorComponent],*/
   providers: [],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

@@ -29,7 +29,8 @@ export class CellEditModeComponent {
 
     @Output() edited = new EventEmitter<any>();
 
-    OnEdited(event: any): boolean {
+    onEdited(event: any): boolean {
+
         this.edited.next(event);
         return false;
     }

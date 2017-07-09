@@ -22,6 +22,10 @@ export class CellDefaultEditorComponent  extends CellCommonEditor {
         return this.cell.getColumn().editor.type;
         
     }
-
+     /*onEdited(event): boolean {
+        
+        this.edited.next(event);
+        return false;
+  }*/
 
 }
